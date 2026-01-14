@@ -123,11 +123,11 @@
 
 ### ✅ The result is saved in:
 
-> * **build/profile/src/callgrind.out**
+> * **build/profile/callgrind.out**
 
 ### ✅ Open with kcachegrind:
 
-> * **kcachegrind build/profile/src/callgrind.out**
+> * **./tools/_run_kcachegrind.sh**
 
 ---
 
