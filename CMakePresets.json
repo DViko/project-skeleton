@@ -1,0 +1,73 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "release",
+            "displayName": "Release",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "unit-test",
+            "inherits": "debug",
+            "cacheVariables": {
+                "ENABLE_TESTS": "ON"
+            }
+        },
+        {
+            "name": "asan",
+            "displayName": "Debug (ASAN)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/asan",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_CXX_FLAGS_DEBUG": "-fsanitize=address -g",
+                "CMAKE_EXE_LINKER_FLAGS": "-fsanitize=address"
+            }
+        },
+        {
+            "name": "profile",
+            "displayName": "RelWithDebInfo (Profiling)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/profile",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "release",
+            "configurePreset": "release"
+        },
+        {
+            "name": "debug",
+            "configurePreset": "debug"
+        },
+        {
+            "name": "unit-test",
+            "configurePreset": "unit-test"
+        },
+        {
+            "name": "asan",
+            "configurePreset": "asan"
+        },
+        {
+            "name": "profile",
+            "configurePreset": "profile"
+        }
+    ]
+}
